@@ -10,9 +10,34 @@ L'output del prezzo finale va messo fuori in forma umana (con massimo due decima
 */
 
 /*
-Chiedere numero di km da percorrere
-Chiedere età del passeggero
+Fare un prompt dove chiedo i kilometri che vuole percorrere
+Fare un prompt dove chiedo l'età della persona
+Calcolare il prezzo totale del viaggio
+Applicare sconto a seconda dell'età delle persone
+Stampare l'output con massimo due decimali
 */ 
 
-const userKm = parseInt(prompt("Quanti km vuoi percorrere?"))
-const userAge = parseInt(prompt("Quanti anni hai?"))
+const userKm = parseInt(prompt("Quanti km vuoi percorrere?"));
+const userAge = parseInt(prompt("Quanti anni hai?"));
+
+const prezzoAlKm = 0.21;
+
+const calcolaPrezzoTotale = (userKm * prezzoAlKm).toFixed(2);
+
+console.log(calcolaPrezzoTotale);
+
+const scontoVenti = (calcolaPrezzoTotale - (calcolaPrezzoTotale / 100 * 20)).toFixed(2);
+
+console.log(scontoVenti);
+
+const scontoQuaranta = (calcolaPrezzoTotale - (calcolaPrezzoTotale / 100 * 40)).toFixed(2);
+
+console.log(scontoQuaranta);
+
+if (userAge < 18){
+    document.getElementById("price").innerHTML = scontoVenti;
+} else if (userAge > 65){
+    document.getElementById("price").innerHTML = scontoQuaranta;
+} else{
+    document.getElementById("price").innerHTML = calcolaPrezzoTotale;
+}
